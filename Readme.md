@@ -11,9 +11,11 @@
 
 ### [EffectiveModernC++笔记](https://github.com/isyiming/live-up/blob/master/EffectiveModernC++.md)
 
+### [Reading&thinking](https://github.com/isyiming/live-up/blob/master/Reading&thinking.md)
 
 
-- 好不容易找到了一份大厂的实习，但是不可抗拒力的原因，可是也只能放弃。自己真的憋屈的话都说不出来了。
+
+- 好不容易找到了一份实习，但是不可抗拒力的原因，可是也只能放弃。
 - 自己苦恼失落了几天，清醒一下，还是得好好学习准备秋招。
 - 总结之前的经历，从2月份开始准备春招的实习面试，用了一个月的时间走马观花看面经，刷了100来道的题。竟然也可以收到一份大厂offer。
 - 那从现在开始到秋招，还有两个月，相信自己还是能绝境逢生！
