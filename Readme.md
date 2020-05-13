@@ -1,15 +1,15 @@
 # live up
 -------------
 
-### [写一个OS的笔记](https://github.com/isyiming/live-up/blob/master/OS.md)
+### [写一个OS的笔记](https://github.com/isyiming/live-up/blob/master/OS/OS.md)
 
-### [数据库笔记](https://github.com/isyiming/live-up/blob/master/Database.md)
+### [数据库笔记](https://github.com/isyiming/live-up/blob/master/Database/Database.md)
 
-### [网络笔记](https://github.com/isyiming/live-up/blob/master/Database.md)
+### [网络笔记](https://github.com/isyiming/live-up/blob/master/Net/Net.md)
 
-### [深度探索C++面向对象模型学习笔记](https://github.com/isyiming/live-up/blob/master/C++object-oriented.md)
+### [深度探索C++面向对象模型学习笔记](https://github.com/isyiming/live-up/blob/master/C++/C++object-oriented.md)
 
-### [EffectiveModernC++笔记](https://github.com/isyiming/live-up/blob/master/EffectiveModernC++.md)
+### [EffectiveModernC++笔记](https://github.com/isyiming/live-up/blob/master/C++/EffectiveModernC++.md)
 
 ### [Reading&thinking](https://github.com/isyiming/live-up/blob/master/Reading&thinking.md)
 
