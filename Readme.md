@@ -11,7 +11,9 @@
 
 ### [EffectiveModernC++笔记](https://github.com/isyiming/live-up/blob/master/C++/EffectiveModernC++.md)
 
-### [Reading&thinking](https://github.com/isyiming/live-up/blob/master/Reading&thinking.md)
+
+## Reading&thinking
+### [并发控制](https://github.com/isyiming/live-up/blob/master/Reading&thinking/并发控制.md)
 
 
 
