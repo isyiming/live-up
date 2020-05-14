@@ -82,10 +82,7 @@
 
 -------------
 #### 第二节：在引导扇区打印hello
-
-### 程序就是bit流+上下文
-
-    第三节
+#### 第三节
     nasm -f bin boot_sect_memory_org.asm -o boot_sect_memory_org.bin
     nasm -f bin boot_sect_memory.asm -o boot_sect_memory.bin
     qemu-system-x86_64 -curses boot_sect_memory_org.bin
@@ -109,7 +106,7 @@
 以上，我们利用BIOS完成了从磁盘读取数据，在屏幕上打印字母。但是我们还没有真正构建起我们的系统内核。如果给以上章节一个类比，我觉的现在就相当于我们的电脑还没完成开机。哈哈其实就是这样，BIOS加载了引导扇区的程序后，通常会加载系统程序。但是我们加载的是读取磁盘和打印字母的程序。接下来就开始真正构建我们的内核吧。
 
 
-#### 第十一节  安装C语言编译器
+#### 第十一节  终于摆脱了汇编，迎来高级语言
     从C语言开始，那么首先安装一个C语言编译器吧，就用gcc,作者提供的方式是下载源码自己编译源文件.
     https://github.com/cfenollosa/os-tutorial/tree/master/11-kernel-crosscompiler
 
@@ -152,39 +149,3 @@
     也可以执行于运行时：
       dll动态链接，项目中依赖的库函数，在运行时，才将库函数和开发代码（机器码）链接起来。
       这样运行速度慢了一些，可是项目的代码段小了很多。
-
-#### 5.链接器的作用
-
-#### 第十三节   创建一个简单的内核和一个能够引导它的引导程序
-
-    i386-elf-gcc -ffreestanding -c kernel.c -o kernel.o
-    nasm kernel_entry.asm -f elf -o kernel_entry.o
-    i386-elf-ld -o kernel.bin -Ttext 0x1000 kernel_entry.o kernel.o --oformat binary
-    nasm bootsect.asm -f bin -o bootsect.bin
-    cat bootsect.bin kernel.bin > os-image.bin
-    qemu-system-i386 -curses -fda os-image.bin
-
-本节咱们还要补充一些额外的知识。关于makefile文件的功能和作用
-
-    如果你用过cmake，或者从源码安装过一些软件，肯定见到过makefile
-    第一次用cmake已经是好几年前的事情啦，这个时候回忆往事真的感慨万千。好怀念本科的日子。
-    那时候对cmake.. 和make这两个命令都不知道是干嘛的。
-    就知道执行完就有了bin文件了，所以这两个命令打的飞快，感觉一秒钟就两条命令输入完成了哈哈。
-
-#### makefile的作用
-
-    上面我们在由源文件生成bin文件的时候，需要手动逐个文件编译。
-    要是仅仅一个文件还好，要是在main函数中调用了好多个子函数呢。
-    每一个源文件编译实在是太麻烦啦！
-    所以项目管理工具make应运而生了，要是下载一个包的源代码，通常在文件夹里都会有一个makefile，make就是按照这个文件来编译链接源代码，生成可执行文件。然后我们再执行make install，就安装到了电脑到默认路径下。
-    可见makefile就是make的药方，makefile告诉了make各个源文件之间的依赖关系。
-
-#### camkelist
-
-    你要是用过cmake，就一定记得camkelist，在cmakelist里配置项目依赖的库和生成文件路径什么的，就很简洁，虽然还是不如IDE方便。可是已经比makefile容易太多啦。
-    cmake就是一个跨平台的项目管理工具，他把make的工作进一步抽象，cmake命令就是将cmakelist文件翻译成makefile的格式，所以camkelist相比makefile可读性也更高啦！
-好了，我们cd到第十三节这个文件夹下，里面有一个makefile，是作者写好到，我们运行下make指令，是不是编译运行都一下全搞定了呢？
-
-对了，要是你和我一样是是macos catalina，记得修改下makefile，加上-curses这个选项哈
-
-还有，makefile中中的gcc和gdb路径记得更改，如果你是和我一样用homebrew安装的话。
