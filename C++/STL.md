@@ -2,6 +2,10 @@
 
 将每个容器的数据结构和内置算法用简练的描述总结下来，希望可以作为一个便捷的小手册使用
 
+---
+# 第一部分 容器概览
+---
+
 序列式容器
 
 name      | 名称       |  插入  |删除 |查找|
@@ -31,6 +35,9 @@ priority-queue  优先队列|o(log(n))|~|o(log(n))|
     hash_multimap
 
 ---
+# 第二部分 序列式容器
+---
+
 ## vector
 1.数据结构
 ```C++
@@ -208,3 +215,11 @@ deque的迭代器为这种遍历的操作创造了条件。如果可以直接通
 
     默认以vector实现，和stack一样，它以底层容器vector来实现，所以priority_queue也是一种容器适配器，而不是容器。
     可以使用pair<优先级,value>做为优先队列的元素。
+----
+
+---
+# 第三部分 关联式容器
+---
+
+
+for(map<int,char>::reverse_iterator rit=m.rbegin();rit!=m.rend();rit++)

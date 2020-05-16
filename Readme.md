@@ -27,8 +27,9 @@
 ### [深度探索C++面向对象模型学习笔记](https://github.com/isyiming/live-up/blob/master/C++/C++object-oriented.md)
 
 ### [EffectiveModernC++笔记](https://github.com/isyiming/live-up/blob/master/C++/EffectiveModernC++.md)
-
+-------------
 
 ## Reading&thinking
+
 ### [并发控制](https://github.com/isyiming/live-up/blob/master/Reading&thinking/并发控制.md)
 -------------

@@ -14,6 +14,6 @@
 另外，这个项目已经是三年前的了，会有一些bug。如果你是macos，本文可以作为跑程序时的参考。
 仅仅将教程的程序跑一遍，想必对学习系统原理帮助不大。还是边跑教程边回顾下系统的知识点，即可以作为之前学习的总结，又可以帮助思考为什么这样实现。
 
-### [第一部分：程序结构和执行](https://github.com/isyiming/live-up/blob/master/OS/OSpart1.md)
+### [第一部分：系统的启动](https://github.com/isyiming/live-up/blob/master/OS/OSpart1.md)
 
 ### [第二部分：从简单程序迈向系统](https://github.com/isyiming/live-up/blob/master/OS/OSpart2.md)
