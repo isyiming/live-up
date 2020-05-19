@@ -53,7 +53,7 @@
     预计在即将推出的qemu4.2版本中会解决这个问题。
     上面那个连接里提到了一个解决方案，不要用brew安装的qemu，自己编译一遍。
     按照他的编译设置，qemu的界面依赖的是SDL，这个也许能解决吧。
-    但是我选择关闭图形化显示～就加一个-nographic的选项。
+    但是我选择关闭图形化显示～就加一个-nographic 的选项。
     所以执行指令是这样的：qemu-system-x86_64 -nographic boot_sect_simple.bin
     可以看到 "Booting from Hard Disk...".
 
