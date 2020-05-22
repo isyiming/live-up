@@ -37,7 +37,10 @@
         timer.h init_timer cpu计时器初始化函数，会调用中断服务函数register_interrupt_handler，定时中断触发后就执行timer_callback打印当前的系统时钟。
     drivers/
       ports和screen是屏幕的驱动
-      keyboard 键盘的驱动
+      keyboard 键盘的驱动 实际上这个键盘的驱动还是有点问题，shift+输出的特殊字符都没办法正常显示，比如一个%，会显示成?5。但是我还是想先不管他了。
+    libc/
+      mem.c 和 mem.h 终于迎来了内存管理
+
 
 
 
