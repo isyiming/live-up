@@ -13,3 +13,5 @@
 
 
 http://c.biancheng.net/view/199.html
+
+#### 内联函数和宏

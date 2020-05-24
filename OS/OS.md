@@ -27,3 +27,7 @@ macos catalina下使用qemu有bug，无法解决，只能使用妥协。
 
 ### [第四部分：终篇，实现内存管理](https://github.com/isyiming/live-up/blob/master/OS/OSpart4.md)
 #### 添加了malloc，实现了简单的内存动态管理。实际上这个微型OS没有实现虚拟内存的功能，所以这个malloc非常简单，就是内核直接对主存进行操作的。
+
+
+
+当我们运行hello world后，发生了什么？
