@@ -1,4 +1,4 @@
-# ming`OS
+# mingOS
 ### 在https://github.com/cfenollosa/os-tutorial 的基础上，进一步实现一个简洁的操作系统
 ### 配合《深入理解计算机系统》食用
 ---------------

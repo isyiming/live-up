@@ -29,7 +29,7 @@ macos catalina下使用qemu有bug，无法解决，只能使用妥协。
 
 终于梳理完了中断的执行过程。在CSAPP中并没有详细的解释，而且CSAPP中是在系统的层面将的，称之为异常。着重讲的是系统层面的异常控制。如果你想从头实现虚拟内存，或者这种必须要cpu被动触发的功能，那么一定要掌握中断的原理。
 
-### [第四部分：终篇，实现动态内存分配malloc](https://github.com/isyiming/live-up/blob/master/OS/OSpart4.md)
+### [第四部分：终篇，实现伪动态内存分配malloc](https://github.com/isyiming/live-up/blob/master/OS/OSpart4.md)
 #### 添加了malloc，简单的内存动态管理。但是只实现了内存分配，没有释放功能。教程到此为止也就结束了。
 修改了程序中页对齐的错误。
 
@@ -50,4 +50,4 @@ macos catalina下使用qemu有bug，无法解决，只能使用妥协。
 ## 再回顾的时候，丰富一些插图。
 
 
-### [ming`OS:新的起点，从虚拟内存开始](https://github.com/isyiming/live-up/blob/master/ming's_OS/ming's_OS.md)
+### [ming`OS:新的起点，从虚拟内存开始](https://github.com/isyiming/live-up/blob/master/ming_OS/ming_OS.md)
