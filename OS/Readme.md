@@ -50,4 +50,4 @@ macos catalina下使用qemu有bug，无法解决，只能使用妥协。
 ## 再回顾的时候，丰富一些插图。
 
 
-### [ming`OS:新的起点，从虚拟内存开始](https://github.com/isyiming/live-up/blob/master/OS/ming's_OS.md)
+### [ming`OS:新的起点，从虚拟内存开始](https://github.com/isyiming/live-up/blob/master/ming's_OS/ming's_OS.md)
