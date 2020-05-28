@@ -16,7 +16,7 @@
 
 ### [第一部分：系统的启动](https://github.com/isyiming/live-up/blob/master/OS/OSpart1.md)
 #### bios加载引导程序，系统启动
-macos catalina下使用qemu有bug，无法解决，只能使用妥协。
+##### macos catalina下使用qemu有bug，无法解决，只能使用妥协。
 
 最重要的我认为就是32位虚拟地址保护模式下的寻址方式，这部分改了好几遍，网上好多博客的要么关键的地方点不到，要么有错误。现在总算是把思路描述的清晰了。了解了怎样寻址的，我们才可以最终实现虚拟内存呀。
 
@@ -31,7 +31,7 @@ macos catalina下使用qemu有bug，无法解决，只能使用妥协。
 
 ### [第四部分：终篇，实现伪动态内存分配malloc](https://github.com/isyiming/live-up/blob/master/OS/OSpart4.md)
 #### 添加了malloc，简单的内存动态管理。但是只实现了内存分配，没有释放功能。教程到此为止也就结束了。
-修改了程序中页对齐的错误。
+##### 修改了程序中页对齐的错误。
 
 实际上这个微型OS没有实现虚拟内存的功能，所以直接添加一个malloc就是内核直接对主存进行操作的。
 
