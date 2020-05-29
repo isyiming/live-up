@@ -1,9 +1,140 @@
 # mingOS
-### 在https://github.com/cfenollosa/os-tutorial 的基础上，进一步实现一个简洁的操作系统
+### 系统的虚拟内存实现
 ### 配合《深入理解计算机系统》食用
 ---------------
 
 我们首先来愉快的看下系统的虚拟内存是如何实现的吧～
+
+还记得cfenollosa在他的os-tutorial最后一节添加的那个kmalloc()函数吗？
+```c
+/* This should be computed at link time, but a hardcoded
+ * value is fine for now. Remember that our kernel starts
+ * at 0x1000 as defined on the Makefile */
+uint32_t free_mem_addr = 0x10000;
+/* Implementation is just a pointer to some free memory which
+ * keeps growing */
+uint32_t kmalloc(size_t size, int align, uint32_t *phys_addr) {
+    /* Pages are aligned to 4K, or 0x1000 * /
+    if (align == 1 && (free_mem_addr & 0x00000FFF)) {
+        free_mem_addr &= 0xFFFFF000;
+        free_mem_addr += 0x1000;
+    }
+    /* Save also the physical address * /
+    if (phys_addr){
+        *phys_addr = free_mem_addr;
+    }
+
+    uint32_t ret = free_mem_addr;
+    free_mem_addr += size; /* Remember to increment the pointer * /
+    return ret;
+}
+```
+这个函数可以为内核返回未使用的内存空间地址。但是当时他的实现有缺陷。free_mem_addr时刻记录着未分配的地址的起点。这是内核启动后就开始调用的函数，此时内核代码刚刚加载到主存中。除了内核代码，还有中断向量表IDT和全局描述符表GDT这些内核在启动时加载到主存中的数据结构。还记不记得GDT要在内核启动之前就要加载好，所以它开始只能放在1M以下的地址空间中。总之，我们知道内核代码加载，并且初始化一些数据结构后，较高地址空间都是未使用的。那么我们设定一个起始地址free_mem_addr，由free_mem_addr～4GB为内核分配内存就好了。
+
+free_mem_addr就是时刻记录着未经使用过的内存段的起始地址。这个其实地址最开始应该是内核占用内存的结束位置，应该在链接的时候记录下来的。但是cfenollosa直接指定了一个地址：0x10000。
+我们看下makefile文件中的链接指令：
+```makefile
+i386-elf-ld -o $@ -Ttext 0x1000 $^ --oformat binary
+```
+-Ttext 0x1000 指定了代码段的起始地址是0x1000。而free_mem_addr的起始地址是0x10000，看来cfenollosa默认了自己的代码段长度没超过0xF000。我就感觉这个地址很奇怪，既然你不知道内核占用内存的结束位置，那你就设定一个安全一点的位置呀，怎么也应该是1M以后的地址。因为实模式只能寻址到1M。
+
+好了，不管这个了。我们说下真正可靠的方法是如何做的吧。我们要在链接的时候记录下内核加载到内存的结束位置。
+```
+/* Link.ld -- Linker script for the kernel - ensure everything goes in the */
+/*            Correct place.  */
+/*            Original file taken from Bran's Kernel Development */
+/*            tutorials: http://www.osdever.net/bkerndev/index.php. */
+/* 这是 JamesM 的教程中的链接文件，ming在此添加了记录内核代码段起始位置和内核占用内存结束位置的两个变量：kern_start 和kern_end
+ENTRY(start)
+SECTIONS
+{
+  . = 0x1000;
+  PROVIDE( kern_start = . );
+  .text  :
+  {
+    code = .; _code = .; __code = .;
+    *(.text)
+    . = ALIGN(4096);
+  }
+
+  .data :
+  {
+     data = .; _data = .; __data = .;
+     *(.data)
+     *(.rodata)
+     . = ALIGN(4096);
+  }
+
+  .bss :
+  {
+    bss = .; _bss = .; __bss = .;
+    *(.bss)
+    . = ALIGN(4096);
+  }
+
+  PROVIDE( kern_end = . );
+
+  end = .; _end = .; __end = .;
+}
+```
+将这个link.ld文件放在makefile的同级目录下，我们再修改下Makefile文件中的链接指令
+```makefile
+# '--oformat binary' deletes all symbols as a collateral, so we don't need
+# to 'strip' them manually on this case
+kernel.bin: boot/kernel_entry.o ${OBJ}
+	# i386-elf-ld -o $@ -Ttext 0x1000 $^ --oformat binary
+	i386-elf-ld -Tlink.ld -melf_i386 -o $@ $^ --oformat binary
+
+# Used for debugging purposes
+kernel.elf: boot/kernel_entry.o ${OBJ}
+	# i386-elf-ld -o $@ -Ttext 0x1000 $^
+	i386-elf-ld -Tlink.ld -melf_i386 -o $@ $^
+```
+原来cfenollosa的代码（就是被我注释掉的部分），-Ttext 0x1000 的意思是指定了代码段的起始地址是0x1000。我们不再直接在链接指令中指定代码段的起始位置了，而是在链接脚本中指定。并在link.ld中用kern_start 和kern_end两个变量记录下代码段的起始地址和内核加载到内存的结束位置。这两个变量在.c文件中extern下就可以使用了。
+我们在men.h中添加如下代码：
+```c
+extern uint8_t kern_start[];//链接的时候指定的内核代码段起始位置，在link.ld中
+extern uint8_t kern_end[];
+```
+由于kernel.c包含了men.h 就可以直接使用这两个变量了。那就在内核启动的时候，打印下这两个变量吧
+```c
+void kernel_main() {
+    isr_install();
+    irq_install();
+
+    asm("int $2");
+    asm("int $3");
+
+    kprint("Type something, it will go through the kernel\n"
+        "Type END to halt the CPU or PAGE to request a kmalloc()\n> ");
+
+    char kern_start_str[16] = "";
+    char kern_end_str[16] = "";
+    hex_to_ascii(kern_start, kern_start_str);
+    hex_to_ascii(kern_end, kern_end_str);
+    kprint("kernel in memory start: ");      kprint(kern_start_str);      kprint("\n");
+    kprint("kernel in memory end  : ");      kprint(kern_end_str);      kprint("\n");
+}
+```
+记得更改程序后，再make之前要先make clean下，清除之前的目标文件，因为我们这次链接部分有了改动。不然就找不到kern_end和kern_end_str了。最后启动系统后的结果，会首先输出下：
+```c
+> kernel in memory start: 0x1000
+kernel in memory end  : 0x4000
+```
+
+我们在链接的时候除了text段，还申请了data和bss段，实际上除了GDT和IDT，现在我还不确定内核还加载了那些数据结构到主存中。我印象中应该是没有。而GDT和IDT加载到了什么位置，我之前看cfenollosa的教程的时候没有注意，但是今天也懒得回去看啦～
+
+
+
+
+
+
+
+
+
+1. 创建了kmalloc.c和kmalloc.h 其中包含
+
+
 
 
 ### 内存管理的解决办法-虚拟内存
@@ -99,11 +230,39 @@
     1）Linux文件系统中的普通文件，这种情况下只是将PTE更改了，但是磁盘上的文件没有真正复制到主存中，只有cpu访问该文件触发缺页异常后，才载入主存。
     2）匿名文件，映射到匿名文件时，这个就是由内核创建的了，这个文件中都是二进制0.然后如果可以的话，直接将内存中的该页写为二进制0.这样磁盘和主存之间没有数据传送
     无论那种情况，一旦一个虚拟页被创建了，它就在一个由内核维护的专门的交换文件（swap file）之间换来换去。任何时刻，交换空间都限制着当前进程能够分配的虚拟页面数目。
+
+交换空间 交换空间swap space是啥？
+
 14.内存映射和共享对象
   进程这一抽象可以为每个进程提供独立的私有虚拟内存空间，但是有时候有些数据是多个进程共用的。例如程序包含的库文件，系统调用。如果每个进程都在物理内存中保留它们的副本，那太占用内存了。
   一个对象如果可以被映射到虚拟内存中的一个区域，要么作为共享对象，要么作为私有对象。
-  如果一个对象被映射为共享对象
 
+  如果一个对象被映射为共享对象，那么共享该对象的进程都可以看到这个对象的改动。
+  如果一个对象被映射为私有对象，那么该对象只对它所在的进程可见。
+  每个对象都有唯一的文件名，所以内核可以快速判定进程1已经映射了这个对象。（文件系统这里还没看呢呀）
+
+15.私有对象的写时复制 copy-on-write
+  如果两个进程创建时有一个相同的私有对象，比如两个进程都调用了同一个库，但是都设置为私有的。
+  那么在物理内存中只会有一个私有对象真实存在，只有当其中一个进程要对一个私有区域的某个页面时，就会触发一个保护故障。如果保护故障程序发现保护异常是由于进程对私有写时复制区域进行修改引起的，那就将该对象在物理内存中创建一个新的副本。这样做还是为了充分利用稀有的内存资源。
+
+16. 再看fork函数
+  fork函数调用一次，返回两次。返回给父进程子进程的PID。返回给子进程0。如果出现错误，就返回一个负值。
+  fork出的子进程会完全复制父进程当前的状态，所以它被创建后会和父进程同步继续执行下去。
+
+  当fork函数被当前进程调用后，内核会为新的进程创建各种数据结构，并分配给它一个唯一的PID（进程标识符，process ID）。它创建了当前进程的mm_struct,区域结构和页表的原样副本。它将两个进程的每个页面都标记为只读，并将两个进程中的每个私有区域都标记为写时复制。
+  当fork函数在新的子进程返回时，新进程现在的虚拟内存刚好和调用fork时存在的虚拟内存相同。当两个进程中的任意一个对私有区域进行写操作时，写时复制机制就会在物理内存中创建新页面。
+
+17. 再看execve函数
+  execve函数在当前进程中加载并运行包含在可执行目标文件a.out，用a.out有效地替代了当前程序。加载并运行a.out需要如下步骤：
+    删除已经存在的用户区域。删除当前进程虚拟地址的用户部分中已经存在的区域结构。
+    映射私有区域。为新程序的代码，数据，bss和栈区域创建新的区域结构。所有的这些新的区域都是私有的，写时复制的。
+    映射共享区域。如果a.out与共享对象链接，那么这些对象就会动态的链接到这个程序，然后在映射到用户虚拟地址空间中的共享区域。
+    设置程序计数器。execve做的最后一件事就是设置当前进程上下文的程序计数器，这样子进程和父进程就同步执行了。
+
+18. 使用mmap函数的用户级内存映射
+  Linux进程可以使用mmap函数来创建新的虚拟内存区域，并将对象映射到这些区域中。
+
+15. 共享对象
 
 15.Linux的虚拟内存系统
   系统为每个进程都维护一个单独的虚拟内存空间，从0x4000 0000开始是：代码段.text，静态存储区和全局变量.data，未初始化的数据.bss, heap堆（进程调用malloc分配内存的时候，新的内存就分配到堆上），共享内存区（默认大小是32M），stack栈（用户创建的局部变量），内核代码和数据，物理内存，与进程相关的数据结构，如页表等。

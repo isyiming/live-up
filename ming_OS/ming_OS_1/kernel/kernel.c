@@ -14,6 +14,13 @@ void kernel_main() {
 
     kprint("Type something, it will go through the kernel\n"
         "Type END to halt the CPU or PAGE to request a kmalloc()\n> ");
+
+    char kern_start_str[16] = "";
+    char kern_end_str[16] = "";
+    hex_to_ascii(kern_start, kern_start_str);
+    hex_to_ascii(kern_end, kern_end_str);
+    kprint("kernel in memory start: ");      kprint(kern_start_str);      kprint("\n");
+    kprint("kernel in memory end  : ");      kprint(kern_end_str);      kprint("\n");
 }
 
 void user_input(char *input) {
@@ -23,19 +30,17 @@ void user_input(char *input) {
     }
     else if (strcmp(input, "PAGE") == 0) {
         /* Lesson 22: Code to test kmalloc, the rest is unchanged */
-        for(int i=0;i<1000000;i++){
-          uint32_t phys_addr;
-          uint32_t page = kmalloc(1000, 1, &phys_addr);
-          char page_str[16] = "";
-          hex_to_ascii(page, page_str);
-          char phys_str[16] = "";
-          hex_to_ascii(phys_addr, phys_str);
-          kprint("Page: ");
-          kprint(page_str);
-          kprint(", physical address: ");
-          kprint(phys_str);
-          kprint("\n");
-        }
+      uint32_t phys_addr;
+      uint32_t page = kmalloc(1000, 1, &phys_addr);
+      char page_str[16] = "";
+      hex_to_ascii(page, page_str);
+      char phys_str[16] = "";
+      hex_to_ascii(phys_addr, phys_str);
+      kprint("Page: ");
+      kprint(page_str);
+      kprint(", physical address: ");
+      kprint(phys_str);
+      kprint("\n");
 
     }
     kprint("You said: ");
