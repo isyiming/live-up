@@ -45,4 +45,4 @@
 ## 再回顾的时候，丰富一些插图。
 
 
-### [ming_OS:新的起点，从虚拟内存开始](https://github.com/isyiming/live-up/ming_OS/Readme.md)
+### [ming_OS:新的起点，从虚拟内存开始](https://github.com/isyiming/ming_OS)
