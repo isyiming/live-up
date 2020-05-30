@@ -2,7 +2,7 @@
 /*            Correct place.  */
 /*            Original file taken from Bran's Kernel Development */
 /*            tutorials: http://www.osdever.net/bkerndev/index.php. */
-/* 这是 JamesM 的教程中的链接文件，ming在此添加了记录内核代码段起始位置和内核占用内存结束位置的两个变量：kern_start 和kern_end
+/* 这是 JamesM 的教程中的链接文件，ming在此添加了记录内核代码段起始位置和内核占用内存结束位置的两个变量：kern_start 和kern_end*/
 ENTRY(start)
 SECTIONS
 {

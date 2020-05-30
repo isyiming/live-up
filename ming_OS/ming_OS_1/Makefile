@@ -22,7 +22,7 @@ kernel.bin: boot/kernel_entry.o ${OBJ}
 # Used for debugging purposes
 kernel.elf: boot/kernel_entry.o ${OBJ}
 	# i386-elf-ld -o $@ -Ttext 0x1000 $^
-	i386-elf-ld -Tlink.ld -melf_i386 -o $@ $^
+	# i386-elf-ld -Tlink.ld -melf_i386 -o $@ $^
 
 run: os-image.bin
 	qemu-system-i386 -curses -fda os-image.bin
