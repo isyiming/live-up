@@ -298,7 +298,7 @@ GDTR寄存器：
       这样运行速度慢了一些，可是项目的代码段小了很多。
 
       我发现在继续完成这个项目的时候，还是要自己写makefile，所以总结下makefile的语法和使用方法。在这里：
-      #### [使用makefile](https://github.com/isyiming/live-up/blob/master/OS/makefile.md)
+#### [使用makefile](https://github.com/isyiming/live-up/blob/master/Reading&thinking/makefile.md)
 
 
 

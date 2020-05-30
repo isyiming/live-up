@@ -12,7 +12,7 @@
 ### [0. 实践：自己实现一个真正意义上的操作系统](https://github.com/isyiming/live-up/blob/master/ming_OS/Readme.md)
 在os-tutorial基础上，进一步实现虚拟内存，文件和多进程
 
-### [1. 写一个OS的笔记](https://github.com/isyiming/live-up/blob/master/OS/Readme.md)
+### [1. os-tutorial笔记](https://github.com/isyiming/live-up/blob/master/OS/Readme.md)
 os-tutorial的阅读笔记，教程内容从系统引导开始，到系统中断结束。虽然没有实现真正意义上的操作系统，但是为后续实现打下基础。这篇笔记提炼项目运行注意事项，总结CSAPP中对应篇章知识，解决了一些bug。原教程中断部分开始就没有对应文档了，这篇笔记可以作为补充。
 
 ### [2. 数据库笔记](https://github.com/isyiming/live-up/blob/master/Database/Database.md)
