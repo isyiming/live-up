@@ -86,7 +86,7 @@ brew为我们安装的qemu4.1版本的图形化显示方式和catalina不兼容�
 
 #### 第十一节  终于摆脱了汇编，迎来高级语言
   从C语言开始，那么首先安装一个C语言编译器吧，就用gcc,作者提供的方式是下载源码自己编译源文件.
-    https://github.com/cfenollosa/os-tutorial/tree/master/11-kernel-crosscompiler
+    https://github.com/cfenollosa/os-tutorial/11-kernel-crosscompiler
 
   作者写这个教程已经是三年前了，现在其实可以直接用brew安装的
 

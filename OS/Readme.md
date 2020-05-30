@@ -10,22 +10,22 @@
 另外，这个项目已经是三年前的了，会有一些bug。在这篇文章中，我会记录下自己跑代码时遇到的问题，以及解决方法。本文可以作为跑程序时的参考。另外，仅仅将教程的程序跑一遍，想必对学习系统原理帮助不大。我会配合CSAPP将涉及到的理论基础总结提炼下来。希望会对看到的同学有些许帮助。
 
 
-### [第一部分：系统的启动](https://github.com/isyiming/live-up/blob/master/OS/OSpart1.md)
+### [第一部分：系统的启动](https://github.com/isyiming/live-up/OS/OSpart1.md)
 #### bios加载引导程序，系统启动
 ##### macos catalina下使用qemu有bug，无法解决，只能使用妥协。
 
 最重要的我认为就是32位虚拟地址保护模式下的寻址方式，这部分改了好几遍，网上好多博客的要么关键的地方点不到，要么有错误。现在总算是把思路描述的清晰了。了解了怎样寻址的，我们才可以最终实现虚拟内存。
 
-### [第二部分：从简单程序迈向系统内核](https://github.com/isyiming/live-up/blob/master/OS/OSpart2.md)
+### [第二部分：从简单程序迈向系统内核](https://github.com/isyiming/live-up/OS/OSpart2.md)
 #### 最简单的内核代码，完成第一个外设的驱动（屏幕）
 
-### [第三部分：逐步完善的系统内核](https://github.com/isyiming/live-up/blob/master/OS/OSpart3.md)
+### [第三部分：逐步完善的系统内核](https://github.com/isyiming/live-up/OS/OSpart3.md)
 #### 添加了中断，并实现键盘输入和shell。
 接下来的内容，从第18节到第24节那个教程就没有配套文档了，所以，如果你对这部分感兴趣，而直接看代码又感觉很没头绪的话，就看我写的笔记吧～
 
 终于梳理完了中断的执行过程。在CSAPP中并没有详细的解释，而且CSAPP中是在系统的层面将的，称之为异常。着重讲的是系统层面的异常控制。如果你想从头实现虚拟内存，或者这种必须要cpu被动触发的功能，那么一定要掌握中断的原理。
 
-### [第四部分：终篇，实现伪动态内存分配malloc](https://github.com/isyiming/live-up/blob/master/OS/OSpart4.md)
+### [第四部分：终篇，实现伪动态内存分配malloc](https://github.com/isyiming/live-up/OS/OSpart4.md)
 #### 添加了malloc，简单的内存动态管理。但是只实现了内存分配，没有释放功能。教程到此为止也就结束了。
 ##### 修改了程序中页对齐的错误。
 
@@ -45,4 +45,4 @@
 ## 再回顾的时候，丰富一些插图。
 
 
-### [ming_OS:新的起点，从虚拟内存开始](https://github.com/isyiming/live-up/blob/master/ming_OS/Readme.md)
+### [ming_OS:新的起点，从虚拟内存开始](https://github.com/isyiming/live-up/ming_OS/Readme.md)

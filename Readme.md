@@ -9,24 +9,24 @@
 - 能够完整的掌握网络的通讯机制，现行网络协议和书本上的似乎已经有些差异了，如有余力，可以花时间研究下
 - C++语言特性还是要挖掘下呀
 -------------
-### [0. 实践：自己实现一个真正意义上的操作系统](https://github.com/isyiming/live-up/blob/master/ming_OS/Readme.md)
+### [0. 实践：自己实现一个真正意义上的操作系统](https://github.com/isyiming/live-up/ming_OS/Readme.md)
 在os-tutorial基础上，进一步实现虚拟内存，文件和多进程
 
-### [1. os-tutorial笔记](https://github.com/isyiming/live-up/blob/master/OS/Readme.md)
+### [1. os-tutorial笔记](https://github.com/isyiming/live-up/OS/Readme.md)
 os-tutorial的阅读笔记，教程内容从系统引导开始，到系统中断结束。虽然没有实现真正意义上的操作系统，但是为后续实现打下基础。这篇笔记提炼项目运行注意事项，总结CSAPP中对应篇章知识，解决了一些bug。原教程中断部分开始就没有对应文档了，这篇笔记可以作为补充。
 
-### [2. 数据库笔记](https://github.com/isyiming/live-up/blob/master/Database/Database.md)
+### [2. 数据库笔记](https://github.com/isyiming/live-up/Database/Database.md)
 
-### [3. 网络笔记](https://github.com/isyiming/live-up/blob/master/Net/Net.md)
+### [3. 网络笔记](https://github.com/isyiming/live-up/Net/Net.md)
 
-### [4. stl源码剖析笔记](https://github.com/isyiming/live-up/blob/master/C++/STL.md)
+### [4. stl源码剖析笔记](https://github.com/isyiming/live-up/C++/STL.md)
 
-### [5. 深度探索C++面向对象模型学习笔记](https://github.com/isyiming/live-up/blob/master/C++/C++object-oriented.md)
+### [5. 深度探索C++面向对象模型学习笔记](https://github.com/isyiming/live-up/C++/C++object-oriented.md)
 
-### [6. EffectiveModernC++笔记](https://github.com/isyiming/live-up/blob/master/C++/EffectiveModernC++.md)
+### [6. EffectiveModernC++笔记](https://github.com/isyiming/live-up/C++/EffectiveModernC++.md)
 -------------
 
 ## Reading&thinking
 
-### [并发控制](https://github.com/isyiming/live-up/blob/master/Reading&thinking/并发控制.md)
+### [并发控制](https://github.com/isyiming/live-up/Reading&thinking/并发控制.md)
 -------------
