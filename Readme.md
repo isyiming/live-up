@@ -9,10 +9,10 @@
 - 能够完整的掌握网络的通讯机制，现行网络协议和书本上的似乎已经有些差异了，如有余力，可以花时间研究下
 - C++语言特性还是要挖掘下呀
 -------------
-### [0. 实践：自己实现一个真正意义上的操作系统](https://github.com/isyiming/ming_OS/ming_OS/Readme.md)
+### [0. 实践：自己实现一个真正意义上的操作系统](https://github.com/isyiming/ming_OS)
 在os-tutorial基础上，进一步实现虚拟内存，文件和多进程
 
-### [1. os-tutorial笔记](https://github.com/isyiming/live-up/OS/Readme.md)
+### [1. os-tutorial笔记](https://github.com/isyiming/live-up/OS)
 os-tutorial的阅读笔记，教程内容从系统引导开始，到系统中断结束。虽然没有实现真正意义上的操作系统，但是为后续实现打下基础。这篇笔记提炼项目运行注意事项，总结CSAPP中对应篇章知识，解决了一些bug。原教程中断部分开始就没有对应文档了，这篇笔记可以作为补充。
 
 ### [2. 数据库笔记](https://github.com/isyiming/live-up/Database/Database.md)
