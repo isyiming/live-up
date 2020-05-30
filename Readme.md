@@ -9,7 +9,7 @@
 - 能够完整的掌握网络的通讯机制，现行网络协议和书本上的似乎已经有些差异了，如有余力，可以花时间研究下
 - C++语言特性还是要挖掘下呀
 -------------
-### [0. 实践：自己实现一个真正意义上的操作系统](https://github.com/isyiming/live-up/ming_OS/Readme.md)
+### [0. 实践：自己实现一个真正意义上的操作系统](https://github.com/isyiming/ming_OS/ming_OS/Readme.md)
 在os-tutorial基础上，进一步实现虚拟内存，文件和多进程
 
 ### [1. os-tutorial笔记](https://github.com/isyiming/live-up/OS/Readme.md)
