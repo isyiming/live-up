@@ -10,6 +10,11 @@
 - C++语言特性还是要挖掘下呀
 -------------
 ### [0. 实践：自己实现一个真正意义上的操作系统](https://github.com/isyiming/ming_OS)
+学习操作系统的最佳实践，自己写一个操作系统出来吧！
+
+  * [part1：对物理内存分页](https://github.com/isyiming/ming_OS/blob/master/part1.md)
+
+
 在os-tutorial基础上，进一步实现虚拟内存，文件和多进程
 
 ### [1. os-tutorial笔记](https://github.com/isyiming/live-up/tree/master/OS)
