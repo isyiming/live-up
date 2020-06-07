@@ -11,14 +11,21 @@
 -------------
 ### [0. 实践：自己实现一个真正意义上的操作系统](https://github.com/isyiming/ming_OS)
 学习操作系统的最佳实践，自己写一个操作系统出来吧！
+* [part1：对物理内存分页](https://github.com/isyiming/ming_OS/blob/master/part1.md)
+* [part2：分页管理和缺页异常](https://github.com/isyiming/ming_OS/blob/master/part2.md)
 
-  * [part1：对物理内存分页](https://github.com/isyiming/ming_OS/blob/master/part1.md)
 
-
-在os-tutorial基础上，进一步实现虚拟内存，文件和多进程
 
 ### [1. os-tutorial笔记](https://github.com/isyiming/live-up/tree/master/OS)
-os-tutorial的阅读笔记，教程内容从系统引导开始，到系统中断结束。虽然没有实现真正意义上的操作系统，但是为后续实现打下基础。这篇笔记提炼项目运行注意事项，总结CSAPP中对应篇章知识，解决了一些bug。原教程中断部分开始就没有对应文档了，这篇笔记可以作为补充。
+* os-tutorial是一个基础的OS实现，系统启动和中断两个部分和实现很完备，但是这篇教程也就实现了启动和中断，所以还算不上真正的操作系统。
+* 不过我的后续代码是在他的基础上继续写下去的，感谢cfenollosa先生的贡献。。
+* 这篇笔记提炼项目运行注意事项，总结CSAPP中对应篇章知识，另外这篇教程是多年前的了，解决了一些bug。
+* 原教程中断部分开始就没有对应文档了，这篇笔记可以作为补充。
+* [OSpart1：系统启动和引导内核](https://github.com/isyiming/live-up/blob/master/OS/OSpart1.md)
+* [OSpart2：第一个外设：屏幕](https://github.com/isyiming/live-up/blob/master/OS/OSpart2.md)
+* [OSpart3：系统中断](https://github.com/isyiming/live-up/blob/master/OS/OSpart3.md)
+* [OSpart4：物理地址的遍历Kmalloc函数](https://github.com/isyiming/live-up/blob/master/OS/OSpart4.md)
+
 
 ### [2. 数据库笔记](https://github.com/isyiming/live-up/tree/master/Database/Database.md)
 
@@ -33,5 +40,6 @@ os-tutorial的阅读笔记，教程内容从系统引导开始，到系统中断
 
 ## Reading&thinking
 
-### [并发控制](https://github.com/isyiming/live-up/tree/master/Reading&thinking/并发控制.md)
+* [并发控制](https://github.com/isyiming/live-up/tree/master/Reading&thinking/并发控制.md)
+* [mkefile语法](https://github.com/isyiming/live-up/tree/master/Reading&thinking/makefile.md)
 -------------

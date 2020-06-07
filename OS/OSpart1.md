@@ -1,6 +1,6 @@
 # 走一遍os-tutorial
 
-## 第一部分：系统的启动
+## 第一部分：系统启动和引导内核
 
 #### 第零节：安装虚拟机环境 qemu和nasm
   macos下的安装方法，在终端中执行指令：brew install qemu nasm
