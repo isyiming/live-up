@@ -6,13 +6,17 @@
 -------------
 ##### 总结下自己的目标
 - 全面系统的掌握计算机系统的知识，能够对计算机的程序运行和系统状态有一个深入的理解
-- 能够完整的掌握网络的通讯机制，现行网络协议和书本上的似乎已经有些差异了，如有余力，可以花时间研究下
+- ~~能够完整的掌握网络的通讯机制，现行网络协议和书本上的似乎已经有些差异了，如有余力，可以花时间研究下~~(已经没时间了，掌握TCP/IP就好，了解网络通讯就好)
+
+
 - C++语言特性还是要挖掘下呀
 -------------
 ### [0. 实践：自己实现一个真正意义上的操作系统](https://github.com/isyiming/ming_OS)
 学习操作系统的最佳实践，自己写一个操作系统出来吧！
 * [part1：对物理内存分页](https://github.com/isyiming/ming_OS/blob/master/part1.md)
 * [part2：分页管理和缺页异常](https://github.com/isyiming/ming_OS/blob/master/part2.md)
+* [part3：内核堆的实现](https://github.com/isyiming/ming_OS/blob/master/part3.md)
+* [part4：多进程（文档待补充）](https://github.com/isyiming/ming_OS/blob/master/part4.md)
 
 
 
@@ -42,4 +46,5 @@
 
 * [并发控制](https://github.com/isyiming/live-up/tree/master/Reading&thinking/并发控制.md)
 * [mkefile语法](https://github.com/isyiming/live-up/tree/master/Reading&thinking/makefile.md)
+* [系统的启动过程回顾](https://github.com/isyiming/live-up/tree/master/Reading&thinking/OSstart.md)
 -------------
