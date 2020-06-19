@@ -33,7 +33,10 @@
 
 ### [2. 数据库笔记](https://github.com/isyiming/live-up/tree/master/Database/Database.md)
 
-### [3. 网络笔记](https://github.com/isyiming/live-up/tree/master/Net/Net.md)
+### 3. 网络笔记
+* [TCP/IP](https://github.com/isyiming/live-up/tree/master/Net/Net.md)
+* [加密原理](https://github.com/isyiming/live-up/blob/master/Net/加密算法.md)
+
 
 ### [4. stl源码剖析笔记](https://github.com/isyiming/live-up/tree/master/C++/STL.md)
 
