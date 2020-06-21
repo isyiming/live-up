@@ -16,7 +16,7 @@
 * [part1：对物理内存分页](https://github.com/isyiming/ming_OS/blob/master/part1.md)
 * [part2：分页管理和缺页异常](https://github.com/isyiming/ming_OS/blob/master/part2.md)
 * [part3：内核堆的实现](https://github.com/isyiming/ming_OS/blob/master/part3.md)
-* [part4：多进程（文档待补充）](https://github.com/isyiming/ming_OS/blob/master/part4.md)
+* [part4：多进程](https://github.com/isyiming/ming_OS/blob/master/part4.md)
 
 
 
