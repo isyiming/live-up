@@ -60,7 +60,7 @@ hashtable | |
 
 4.常用函数的实现策略
 ```c++
-    pop_back()//直接将尾端标/Users/ming/本地文稿/GitHub/live-up/C++/C++base.md记finish往前移动一位
+    pop_back()//直接将尾端标记finish往前移动一位
     erase(iterator first,iterator last);//将last后的元素都向前移动到first后，再将尾端标记finish往前移动到（last-first）
     clear();//用erase实现
     insert(position,n,x)；//在position前插入n个新节点，需要考虑两种情况，备用空间是否>插入节点个数
@@ -96,8 +96,8 @@ const
   return (*node).data;
 }
 self& operator++(){
-  node=(link_type)((*node).next);
-  return *this;
+  node=(link_type)((* node).next);
+  return * his;
 }
 `````
 
@@ -218,8 +218,7 @@ deque的迭代器为这种遍历的操作创造了条件。如果可以直接通
 
 1.概述
 
-    默认以vector实现，和stack一样，它以底层容器vector来实现，所以priority_queue也是一种容器适配器，而不是容器。
-    可以使用pair<优先级,value>做为优先队列的元素。
+    它以堆来实现，可以使用pair<优先级,value>做为优先队列的元素。
 ----
 
 ---
@@ -303,7 +302,7 @@ deque的迭代器为这种遍历的操作创造了条件。如果可以直接通
     set就是将元素按照搜素树的顺序填入rb-tree，所以stl中的set就是一个有序的树，利用stl提供的迭代器我们才可以顺序访问它。
     既然set的元素值就是键值，就是代表它的排列顺序的值，所以set没有更改元素的操作。这一点在看完rb-tree真的是明明白白的事情。
     想要改这个值，其实也可以，那就是把当前节点删除，然后在树的最后插入一个新节点。
-    所以set索性就提供更改操作了，只能删除和插入。
+    所以set索性就不提供更改操作了，只能删除和插入。
     底层源码决定了set拥有的特性，
 ### map
 
